@@ -66,7 +66,7 @@ burger-switch = if guest.burgers = 1 then "burger"
 ```
 
 ```eve
-[@"my party" date]
+[#"my party" date]
 friend = [#friend busy-dates != date]
 guest = if friend then friend
         if friend.spouse then friend.spouse
@@ -75,7 +75,7 @@ guest = if friend then friend
 Using `else if`
 
 ```eve
-burgers = if guest = [@Arthur] then 3
+burgers = if guest = [#Arthur] then 3
           else if guest = [#hungry] then 2
           else if guest = [#vegetarian] then 0
           else 1
@@ -84,7 +84,7 @@ burgers = if guest = [@Arthur] then 3
 Multiple returns
 
 ```eve
-(burgers, status) = if guest = [@Arthur] then (3, #fed)
+(burgers, status) = if guest = [#Arthur] then (3, #fed)
                     else if guest = [#hungry] then (2, #fed)
                     else if guest = [#vegetarian] then (0, #needsfood)
                     else (1, #fed)
