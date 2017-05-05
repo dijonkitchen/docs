@@ -53,8 +53,8 @@ Prints the current time as a formatted string.
 search
   [#time hours minutes seconds]
 
-bind @browser
-  [#div text: "The time is {{hours}}:{{minutes}}:{{seconds}}"]
+bind
+  [#view/value | value: "The time is {{hours}}:{{minutes}}:{{seconds}}"]
 ```
 
 ### Example Usage
