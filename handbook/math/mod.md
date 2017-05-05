@@ -36,8 +36,8 @@ search
           if angle < pi[] * -1 then angle + 2 * pi[]
           else angle
         
-bind @view
-  [#value | value: "{{value}} -> {{pi2pi}}"]
+bind
+  [#view/value | value: "{{value}} -> {{pi2pi}}"]
 ```  
 
 ## See Also

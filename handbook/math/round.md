@@ -33,9 +33,9 @@ search
   y = round[value: 34.5]
   z = round[value: 34.4]
   
-bind @browser
-  [#div text: "The round of 34.5 is {{y}}"]
-  [#div text: "The round of 34.4 is {{z}}"]
+bind
+  [#view/value text: "The round of 34.5 is {{y}}"]
+  [#view/value text: "The round of 34.4 is {{z}}"]
 ```
 
 ## See Also

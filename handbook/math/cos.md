@@ -37,8 +37,8 @@ Calculate the cosine of 90 degrees
 search
   y = cos[degrees: 90]
   
-bind @browser
-  [#div text: y]
+bind
+  [#view/value text: y]
 ```
 
 ## See Also

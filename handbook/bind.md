@@ -36,8 +36,8 @@ Consider the following block that reads the current time, and prints it to the s
 search
   [#time seconds]
 
-bind @browser
-  [#div text: seconds]
+bind
+  [#ui/div text: seconds]
 ```
 
 In this block we search for the current time and bind it to a message that displays it. The message exists as long as the current time stays the same (1 second obviously). When the time changes, the current message disappears and is replaced with a new message, displaying the new time. This is the behavior of bind; **bound records persist only as long as their matching records**. 
@@ -48,8 +48,8 @@ Now let's look at what commit does in contrast:
 search
   [#time seconds]
 
-commit @browser
-  [#div text: seconds]
+commit
+  [#ui/div text: seconds]
 ```
 
 Compared to the previous block, we only changed `bind` to `commit`. When you run this block, at first you'll see a single message like before. However, you'll notice that messages begin to accumulate every second. Unlike with bind, **committed records persist in the database until they are intentionally removed**.
@@ -60,13 +60,13 @@ To make things very concrete, we can actually mimic the behavior of a bind using
 search 
   [#time seconds]
 
-search @browser
+search
   s = seconds - 1
   // Do some math to handle the roll over at 60 seconds
   last-time = s - 60 * floor[value: s / 60]
-  msg = [#div text: last-time]
+  msg = [#ui/div text: last-time]
   
-commit @browser
+commit browser
   msg := none
 ```
 
@@ -252,7 +252,7 @@ search
   (am/pm, adjusted-hours) = if hours >= 12 then ("PM", hours - 12)
                             else if hours = 0 then ("AM", 12)
           					else ("AM", hours)
-bind @browser
+bind
   [#div text: "The current time is {{adjusted-hours}}:{{minutes}}:{{seconds}} {{am/pm}}"]
 ```
 

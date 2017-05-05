@@ -34,7 +34,7 @@ search
   x = convert[value: "1", to: "number"]
   y = x * 2
   
-bind @browser
+bind 
   [#div text: y]
 ```
 
@@ -45,7 +45,7 @@ search
   str = convert[value: "42", to: "number"]
   c = length[str]
   
-bind @browser
+bind
   [#div text: c]
 ```
 

@@ -36,8 +36,8 @@ Generate and display the integers between 1 and 10. In this example, `y = (1, 2,
 search
   y = range[from: 1, to: 10]
 
-bind @browser
-  [#div sort: y, text: y]
+bind
+  [#view/value sort: y, text: y]
 ```
 
 Generate and display the odd integers between 1 and 10. In this example, `y = (1, 3, 5, 7, 9)`. Notice the set does not include `10` in this case.
@@ -46,8 +46,8 @@ Generate and display the odd integers between 1 and 10. In this example, `y = (1
 search
   y = range[from: 1, to: 10, increment: 2]
 
-bind @browser
-  [#div sort: y, text: y]
+bind
+  [#view/value sort: y, text: y]
 ```
 
 We can use range and Eve's join semantics to generate indicies for a grid of cells.
@@ -58,20 +58,9 @@ search
   j = range[from: 1 to: 5]
   coordinate = "({{i}}, {{j}})"
 
-bind @browser
-  [#div sort: coordinate, text: coordinate]
+bind
+  [#view/value sort: coordinate, text: coordinate]
 ``` 
-
-Will display:
-
-```
-(1, 1)
-(1, 2)
-(1, 3)
-...
-(5, 4)
-(5, 5)
-```
 
 ### Example Usage
 

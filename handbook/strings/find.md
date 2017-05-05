@@ -36,7 +36,7 @@ search
   str = "ahellobhellochello"
   (a, b) = find[text: str, subtext: "hello"]
 
-bind @browser
+bind
   [#div text: "{{a}}, {{b}}"]
 ```
 
@@ -47,7 +47,7 @@ search
   str = "xxxXxxXxXXX"
   (a, b) = find[text: str, subtext: "X", case-sensitive: true]
 
-bind @browser
+bind
   [#div text: "{{a}}, {{b}}"]
 ```
 
@@ -58,7 +58,7 @@ search
   str = "xxxXxxXxXXX"
   (a, b) = find[text: str, subtext: "X", case-sensitive: true, from: 5]
 
-bind @browser
+bind
   [#div text: "{{a}}, {{b}}"]
 ```
 

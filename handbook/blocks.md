@@ -116,7 +116,7 @@ A block with search and bind actions. The bind action adds the `#div` to the `@b
 search
   [name]
 
-bind @browser
+bind
   [#div text: name]
 ```
 
@@ -132,21 +132,21 @@ commit
 Search for a `#click` in `@event`, create a `#request` in `@http`
 
 ```eve
-search @event
+search
   [#click]
 
-commit @http
+commit 
   [#request #google url: "https://jsonplaceholder.typicode.com/posts/"]
 ```
 Search for a `#request` with a response, display it in the browser
 
 ```eve
-search @http
+search 
   [#request #google response: [json]]
   json = [#array]
   lookup[record: json, attribute, value: [title body]]
 
-bind @browser
+bind
   [#div text: "{{title}}"]
   [#div text: "{{body}}"]
 ```

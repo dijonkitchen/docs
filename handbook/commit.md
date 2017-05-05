@@ -14,8 +14,6 @@ updates or creates records that persist until intentionally removed
 
 ```eve
 commit
-
-commit @database1, ..., @databaseN
 ```
 
 ## Description
@@ -34,7 +32,7 @@ Consider the following block that reads the current time, and prints it to the s
 search
   [#time seconds]
 
-bind @browser
+bind
   [#div text: seconds]
 ```
 
@@ -46,7 +44,7 @@ Now let's look at what commit does in contrast:
 search
   [#time seconds]
 
-commit @browser
+commit
   [#div text: seconds]
 ```
 
@@ -58,13 +56,13 @@ To make things very concrete, we can actually mimic the behavior of a bind using
 search 
   [#time seconds]
 
-search @browser
+search
   s = seconds - 1
   // Do some math to handle the roll over at 60 seconds
   last-time = s - 60 * floor[value: s / 60]
   msg = [#div text: last-time]
   
-commit @browser
+commit
   msg := none
 ```
 

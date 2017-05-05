@@ -29,6 +29,7 @@ y = sum[value, given, per]
 ## Examples
 
 Context data:
+
 ```eve
 commit
   [#employee salary: 100, department: "hunting"]
@@ -37,23 +38,25 @@ commit
 ```
 
 Get sum of all matching records:
+
 ```eve
 search
   employee = [#employee salary department]
   total-salary = sum[value:salary, given: employee]
 
-bind @browser
-  [#div text: "Total: {{ total-salary }}" ]
+bind
+  [#view/value text: "Total: {{ total-salary }}" ]
 ```
 
 Get sum of matching records grouped by department:
+
 ```eve
 search
   employee = [#employee salary department]
   total-salary = sum[value:salary, given: employee, per: department]
 
-bind @browser
-  [#div text: "{{department}} : {{ total-salary }}" ]
+bind
+  [#view/value text: "{{department}} : {{ total-salary }}" ]
 ```
 
 ## See Also

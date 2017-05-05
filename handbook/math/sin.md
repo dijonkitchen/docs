@@ -36,9 +36,9 @@ search
   y = sin[degrees: 90]
   x = sin[radians: 3.14 / 2]
   
-bind @browser
-  [#div text: y]
-  [#div text: x]
+bind
+  [#view/value text: y]
+  [#view/value text: x]
 ```
 
 ## See Also

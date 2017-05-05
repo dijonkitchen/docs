@@ -31,8 +31,8 @@ Get the absolute value of a number
 search
   y = abs[value: -3]
   
-bind @browser
-  [#div text: y]
+bind
+  [#view/value text: y]
 ```
 
 Displays the number `3`.

@@ -22,7 +22,10 @@ y = random[seed]
 ## Description
 
 `y = random[seed]` generates a pseudorandom number drawn from the [standard uniform distribution][1], meaning the generated number is restricted to be between 0 and 1. To generate a number between a custom range, see the examples.
-`random` requires a seed as an argument because there is no such thing as a truely random number generator. Instead, "random number generators" are equations that produce results (based on original numbers) that are unpredicatble to humans, but repeatable. For instance, `7 * i % 11` is a simple pseudorandom number generator: the numbers it produces seem to have no relation at all with `i` itself. Therefore it is functionally random to humans, but with the same value for `i`, the same output is produced. In this example, `i` is the seed. A good value to use as a seed is the time in milliseconds, since it is always changing, insuring that you will almost never get the same seed twice (this does not mean you will always get a different number, however).
+
+As with all functions in Eve, `random` is referentially transparent, meaning the function will return consistent output for a given input. When you supply a seed, this is used to generate a random number which is then memoized, insuring that the output will be the same when supplied with a previously used seed. Therefore, you must take care in your choice of seed, or the random might not work as you expect. 
+
+Examples of a common seeds are the current timestamp, or the number of frames that have been rendered since the start of the application.
 
 [1]: https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)#Standard_uniform
 
@@ -35,8 +38,8 @@ search
   [#time minutes seconds]
   x = random[seed: seconds]
 
-commit @browser
-  [#div time: "{{minutes}}{{seconds}}"  text: x]
+commit
+  [#view/value time: "{{minutes}}{{seconds}}" | value: x]
 ```
 
 Generate a random number between `min` and `max`
@@ -58,8 +61,8 @@ search
   i = range[from: 1, to: 10]
   x = random[seed: i]
 
-bind @browser
-  [#div text: x]
+bind
+  [#view/value | value: x]
 ```
 
 ### Example Usage

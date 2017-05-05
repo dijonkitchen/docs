@@ -69,8 +69,8 @@ search
   [#student name grade]
   index = sort[value: grade]
 
-bind @browser
-  [#div sort: index, text: "{{index}} - {{name}} {{grade}}"]
+bind 
+  [#view/value sort: index, text: "{{index}} - {{name}} {{grade}}"]
 ```
 
 The browser handles the task of rendering the divs in the order specified by the `sort`attribute. Taking this further, we can choose the direction of the sortted set, whether "up" or "down". The default direction is "up" when none is specified.
@@ -80,8 +80,8 @@ search
   [#student name grade]
   index = sort[value: grade, direction: "down"]
   
-bind @browser
-  [#div sort: index, text: "{{index}} - {{name}} {{grade}}"]
+bind
+  [#view/value sort: index, text: "{{index}} - {{name}} {{grade}}"]
 ```
 
 You can also sort across multiple axes of a record. For instance, we can sort grade from 9 to 12, then sort by name from Z - A.
@@ -91,8 +91,8 @@ search
   [#student name grade]
   index = sort[value: (grade, name) , direction: ("up","down")]
 
-bind @browser
-  [#div sort: index, text: "{{index}} - {{name}} {{grade}}"]
+bind 
+  [#view/value sort: index, text: "{{index}} - {{name}} {{grade}}"]
 ```
 
 This can be extended to sort any number of attributes
@@ -102,8 +102,8 @@ search
   [#student name grade teacher GPA]
   index = sort[value: (grade, teacher, name, GPA) , direction: ("up", "down", "up", "down")]
 
-bind @browser
-  [#div sort: index, text: "{{index}} - {{name}} {{grade}} {{teacher}} {{GPA}}"]
+bind
+  [#view/value sort: index, text: "{{index}} - {{name}} {{grade}} {{teacher}} {{GPA}}"]
 ```
 
 Finally, we can group sorted attributes with the per argument. Here you can see the difference between sorting by name *then* grade, and sorting by name *per* grade.
@@ -113,8 +113,8 @@ search
   [#student name grade GPA]
   index = sort[value: (GPA, name), per: grade]
   
-bind @browser
-  [#div sort: index, text: "{{index}} - {{name}} {{grade}}"]
+bind 
+  [#view/value sort: index, text: "{{index}} - {{name}} {{grade}}"]
 ```
 
 When you sort per grade, then name is first grouped by grade, and each of those groups is then sorted. This is why index goes from 1-6 instead of 1-20 as in the other examples; Although there are still 20 elements in index, the maximum is 6 because no grade has more than 6 students. You might want to sort data this way in order to display it in a nested structure, such as this:
@@ -124,8 +124,8 @@ search
 	[#student name grade teacher]
   index = sort[value: name, per: grade]
   
-bind @browser
-  [#div grade children: 
+bind
+  [#ui/div grade children: 
     [#h3 sort: 0, text: "Grade: {{grade}}"]
   	[#div sort: index, text: "{{index}} {{name}}"]]
 ```

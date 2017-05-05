@@ -32,9 +32,9 @@ search
   y = fix[value: 34.7]
   z = fix[value: -34.7]
 
-bind @browser
-  [#div text: "The fix of 34.7 is {{y}}"]
-  [#div text: "The fix of -34.7 is {{z}}"]
+bind
+  [#view/value text: "The fix of 34.7 is {{y}}"]
+  [#view/value text: "The fix of -34.7 is {{z}}"]
 ```
 
 We see that the fix of `34.7` is `34`, while the fix of `-34.7` is `-34`. Compare this to rounding the numbers:
@@ -44,9 +44,9 @@ search
   y = round[value: 34.7]
   z = round[value: -34.7]
 
-bind @browser
-  [#div text: "The round of 34.7 is {{y}}"]
-  [#div text: "The round of -34.7 is {{z}}"]
+bind
+  [#view/value text: "The round of 34.7 is {{y}}"]
+  [#view/value text: "The round of -34.7 is {{z}}"]
 ```
 
 We see that the round of `34.7` is `35`, while the round of `-34.7` is `-35`.

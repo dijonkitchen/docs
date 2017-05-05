@@ -74,8 +74,8 @@ search
   students = [#student]
   enrollment = count[given: students]
 
-bind @view
-  [#value | value: "There are {{enrollment}} students in the district"]
+bind
+  [#view/value | value: "There are {{enrollment}} students in the district"]
 ```
 
 Now let's count the number of students in each school.
@@ -85,8 +85,8 @@ search
   students = [#student school]
   school-enrollment = count[given: students, per: school]
 
-bind @view
-  [#value | value: "{{school-enrollment}} attend {{school}}"]
+bind
+  [#view/value | value: "{{school-enrollment}} attend {{school}}"]
 ```
 
 We could have similarly counted the number of students in each grade across the district.
@@ -96,8 +96,8 @@ search
   students = [#student grade]
   grade-enrollment = count[given: students, per: grade]
 
-bind @view
-  [#value | value: "{{grade-enrollment}} students are in {{grade}}th grade"]
+bind
+  [#view/value | value: "{{grade-enrollment}} students are in {{grade}}th grade"]
 ```
 
 Finally, we can count the number of students per grade, per school. 
@@ -107,8 +107,8 @@ search
   students = [#student grade school]
   grade-school-enrollment = count[given: students, per: (grade, school)]
 
-bind @view
-  [#value | value: "{{grade-school-enrollment}} students are in {{grade}}th grade at {{school}}"]
+bind
+  [#view/value | value: "{{grade-school-enrollment}} students are in {{grade}}th grade at {{school}}"]
 ```
 
 ### Example Usage

@@ -12,18 +12,25 @@ weight: 3
 
 There are three actions in Eve: `search`, `bind`, and `commit`.
 
-`search` is used when you want to gather records from one or more databases. These records are called "supporting records", because they are used as a basis for bound or committed records.
+`search` is used to find records in the Eve database.
 
-`bind` and `commit` actions are used when you want to update records in one or more databases, but they differ in the way the updates are performed.
+`bind` and `commit` actions are used when you want to update records in the database, but they differ how long those updates persist.
 
-- bound records last only as long as their supporting records. When supporting records changes, then bound records changes accordingly, replacing any previously bound records.
+- bound records have a lifetime equal to the records used to derive them. When supporting records change, then bound records are updated, replacing any previously bound records.
 
-- committed records persist past the lifetime of their supporting records. When supporting records change, then a new record is committed, leaving any previously committed records still intact.
+- committed records persist in the database until they are explicitly changed or removed. When supporting records change, then a new record is committed, leaving any previously committed records still intact.
 
 ## Examples
 
-```eve
+Because it is bound, a student's GPA updates whenever a new score is added to his or her record
 
+```eve
+search
+  student = [#student scores]
+  calculated-gpa = average[given: scores]
+
+bind
+  student.gpa = calculated-gpa
 ```
 
 ## See Also
